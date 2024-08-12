@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Heading,
-  Flex,
-  Button,
-  Text,
-} from '@chakra-ui/react';
+import { ChakraProvider, Heading, Flex, Text } from '@chakra-ui/react';
 import Grid from './Grid';
 import { useRobot } from 'src/hooks/useRobot';
 import { ControlButton } from './ControlButton';

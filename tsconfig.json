@@ -5,12 +5,12 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": true,
-    "baseUrl": ".",
-    "paths": {
-      "@components/*": ["src/components/*"]
-    },
     "types": ["jest", "@testing-library/jest-dom"],
-    "verbatimModuleSyntax": false
+    "verbatimModuleSyntax": false,
+    "baseUrl": "src",
+    "paths": {
+      "src/*": ["*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
