@@ -5,11 +5,12 @@ import { useRobot } from 'src/hooks/useRobot';
 import { ControlButton } from './ControlButton';
 
 const App: React.FC = () => {
-  const { robot, rotateLeft, rotateRight, moveForward, error } = useRobot({
-    x: 0,
-    y: 0,
-    direction: 'NORTH',
-  });
+  const { robot, rotateLeft, rotateRight, moveForward, moveBackward, error } =
+    useRobot({
+      x: 0,
+      y: 0,
+      direction: 'NORTH',
+    });
 
   return (
     <ChakraProvider>
@@ -36,6 +37,7 @@ const App: React.FC = () => {
         <Flex mt={4} justifyContent="center">
           <ControlButton onClick={rotateLeft}>Rotate Left</ControlButton>
           <ControlButton onClick={moveForward}>Move Forward</ControlButton>
+          <ControlButton onClick={moveBackward}>Move Backward</ControlButton>
           <ControlButton onClick={rotateRight}>Rotate Right</ControlButton>
         </Flex>
       </Flex>

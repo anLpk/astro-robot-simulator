@@ -30,28 +30,52 @@ export const useRobot = (initialState: RobotState) => {
 
   const moveForward = () => {
     let { x, y } = robot;
-    let newX = x;
-    let newY = y;
 
     switch (robot.direction) {
       case 'NORTH':
-        newY = Math.min(4, y + 1);
+        y = Math.min(4, y + 1);
         break;
       case 'EAST':
-        newX = Math.min(4, x + 1);
+        x = Math.min(4, x + 1);
         break;
       case 'SOUTH':
-        newY = Math.max(0, y - 1);
+        y = Math.max(0, y - 1);
         break;
       case 'WEST':
-        newX = Math.max(0, x - 1);
+        x = Math.max(0, x - 1);
         break;
     }
 
-    if (newX === x && newY === y) {
+    if (x === robot.x && y === robot.y) {
       setError("The robot can't move further in this direction.");
     } else {
-      setRobot({ ...robot, x: newX, y: newY });
+      setRobot({ ...robot, x, y });
+      setError(null);
+    }
+  };
+
+  const moveBackward = () => {
+    let { x, y } = robot;
+
+    switch (robot.direction) {
+      case 'NORTH':
+        y = Math.max(0, y - 1);
+        break;
+      case 'EAST':
+        x = Math.max(0, x - 1);
+        break;
+      case 'SOUTH':
+        y = Math.min(4, y + 1);
+        break;
+      case 'WEST':
+        x = Math.min(4, x + 1);
+        break;
+    }
+
+    if (x === robot.x && y === robot.y) {
+      setError("The robot can't move further in this direction.");
+    } else {
+      setRobot({ ...robot, x, y });
       setError(null);
     }
   };
@@ -61,6 +85,7 @@ export const useRobot = (initialState: RobotState) => {
     rotateLeft,
     rotateRight,
     moveForward,
+    moveBackward,
     error,
   };
 };
