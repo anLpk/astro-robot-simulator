@@ -17,15 +17,15 @@ const Grid: React.FC<GridProps> = ({ robotPosition }) => {
         const isRobotHere = x === robotPosition.x && y === robotPosition.y;
         cells.push(
           <Box
-            margin={'auto'}
             key={`${x}-${y}`}
-            width="50px"
-            height="50px"
-            border="1px solid black"
+            width="60px"
+            height="60px"
+            border={'2px solid black'}
             bg={isRobotHere ? 'lightblue' : 'white'}
             display="flex"
             alignItems="center"
             justifyContent="center"
+            fontSize="xl"
           >
             {isRobotHere ? '🤖' : ''}
           </Box>,

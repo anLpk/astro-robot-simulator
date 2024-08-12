@@ -1,9 +1,22 @@
-import React, { useState } from 'react';
-import { ChakraProvider, Box, Heading, Flex } from '@chakra-ui/react';
+import React from 'react';
+import {
+  ChakraProvider,
+  Box,
+  Heading,
+  Flex,
+  Button,
+  Text,
+} from '@chakra-ui/react';
 import Grid from './Grid';
+import { useRobot } from 'src/hooks/useRobot';
+import { ControlButton } from './ControlButton';
 
 const App: React.FC = () => {
-  const [robotPosition, _setRobotPosition] = useState({ x: 0, y: 0 });
+  const { robot, rotateLeft, rotateRight, moveForward, error } = useRobot({
+    x: 0,
+    y: 0,
+    direction: 'NORTH',
+  });
 
   return (
     <ChakraProvider>
@@ -11,14 +24,27 @@ const App: React.FC = () => {
         minHeight="100vh"
         alignItems="center"
         justifyContent="center"
-        bg="tomato"
-        color="white"
+        bg="gray.200"
         p={4}
+        flexDirection="column"
       >
-        <Box textAlign="center">
-          <Heading mb={6}>Robot Simulator</Heading>
-          <Grid robotPosition={robotPosition} />
-        </Box>
+        <Heading color="black" mb={6}>
+          Robot Simulator
+        </Heading>
+        <Grid robotPosition={{ x: robot.x, y: robot.y }} />
+        <Text mt={4} fontSize="xl" color="black">
+          Direction: {robot.direction}
+        </Text>
+        {error && (
+          <Text mt={2} fontSize="md" color="red.400">
+            {error}
+          </Text>
+        )}
+        <Flex mt={4} justifyContent="center">
+          <ControlButton onClick={rotateLeft}>Rotate Left</ControlButton>
+          <ControlButton onClick={moveForward}>Move Forward</ControlButton>
+          <ControlButton onClick={rotateRight}>Rotate Right</ControlButton>
+        </Flex>
       </Flex>
     </ChakraProvider>
   );
