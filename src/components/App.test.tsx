@@ -4,8 +4,8 @@ import App from './App';
 import { describe } from 'node:test';
 
 describe('App', () => {
-  it('renders the welcome message', () => {
+  it('renders the robot icon', () => {
     const { getByText } = render(<App />);
-    expect(getByText('Hello, Bellroy - Robot Simulator!')).toBeInTheDocument();
+    expect(getByText('🤖')).toBeInTheDocument();
   });
 });
