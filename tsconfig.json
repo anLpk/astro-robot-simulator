@@ -8,7 +8,9 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"]
-    }
+    },
+    "types": ["jest", "@testing-library/jest-dom"],
+    "verbatimModuleSyntax": false
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
